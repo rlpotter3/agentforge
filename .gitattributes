@@ -1,0 +1,8 @@
+# Line-ending policy.
+# "text=auto" lets Git detect text files and store them with LF line endings in
+# the repository, whatever OS the contributor uses. Each contributor's checkout
+# uses their platform's line endings. Binary files are left untouched.
+* text=auto
+
+# Shell scripts must keep LF, even on Windows checkouts, or they break when run on Linux/macOS.
+*.sh text eol=lf
