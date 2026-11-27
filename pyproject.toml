@@ -1,0 +1,49 @@
+# The single manifest for the project: metadata, dependencies and tool settings (ADR-0004).
+
+[project]
+name = "agentforge"
+version = "0.1.0"
+description = "An open-source platform for building, running and managing AI agents."
+readme = "README.md"
+license = "Apache-2.0"
+license-files = ["LICENSE"]
+requires-python = ">=3.12"
+# Runtime dependencies. Add them with `uv add <name>`.
+dependencies = []
+
+# The build backend turns the source tree into an installable package. uv also uses it to
+# install this project into the virtual environment, so tests import it like any other library.
+[build-system]
+requires = ["uv_build>=0.13.10,<0.14.0"]
+build-backend = "uv_build"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+# Fail on misspelled settings or test markers instead of silently ignoring them.
+addopts = ["--strict-config", "--strict-markers", "--import-mode=importlib"]
+# A warning today is often a failure after the next upgrade, so treat warnings as errors.
+filterwarnings = ["error"]
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+# Rule families: pycodestyle (E, W), Pyflakes (F), import sorting (I), likely bugs (B),
+# newer-syntax upgrades (UP), simplifications (SIM) and Ruff's own checks (RUF).
+select = ["E", "W", "F", "I", "B", "UP", "SIM", "RUF"]
+
+[tool.pyright]
+include = ["src", "tests"]
+typeCheckingMode = "strict"
+# Check against the oldest supported version, so newer-only features are reported.
+pythonVersion = "3.12"
+# Where to find installed dependencies: the .venv folder that uv creates.
+venvPath = "."
+venv = ".venv"
+
+[dependency-groups]
+dev = [
+    "pyright[nodejs]>=1.1.414",
+    "pytest>=9.2.0",
+    "ruff>=0.17.6",
+]

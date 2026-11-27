@@ -1,0 +1,39 @@
+# Continuous integration: runs the checks from ADR-0004 on every pull request and push to main.
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+# The jobs only need to read the code. Granting nothing more limits the damage a
+# compromised dependency or action could do.
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    strategy:
+      # Let each Python version finish, so one failure doesn't hide the other's result.
+      fail-fast: false
+      # A "matrix" runs this job once for each listed value.
+      matrix:
+        python-version: ["3.12", "3.14"]
+    name: check (Python ${{ matrix.python-version }})
+    steps:
+      # Actions are pinned to a commit hash, because a version tag can be moved to other code.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@1db35dd8eee11c5894872e0b383ae6c406cf738d # v10.4.0
+        with:
+          version: "0.13.10"
+          python-version: ${{ matrix.python-version }}
+      # --locked fails the build if uv.lock no longer matches pyproject.toml.
+      - run: uv sync --locked
+      - run: uv run ruff format --check
+      - run: uv run ruff check
+      # Pyright's configured pythonVersion is the 3.12 minimum; override it to match the matrix.
+      - run: uv run pyright --pythonversion ${{ matrix.python-version }}
+      - run: uv run pytest
