@@ -3,6 +3,9 @@
 Contributions are welcome. agentforge is in its early days, so please open an issue to discuss a
 large change before you write it.
 
+To report a security problem, follow the [security policy](SECURITY.md) instead of opening a public
+issue.
+
 ## Set up
 
 Follow [Getting started](README.md#getting-started) in the README to install uv and the
