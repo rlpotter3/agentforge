@@ -42,11 +42,8 @@ will be captured as an ADR.
 
 ## Contributing
 
-Contributions are welcome. Before you open a pull request:
-
-1. Include tests for any new behaviour.
-2. Make sure you have committed no credentials or `.env` files.
-3. Add an ADR for any significant architectural change.
+Contributions are welcome. [CONTRIBUTING.md](CONTRIBUTING.md) explains how to make a change and
+what a pull request needs, including tests, handling of secrets and architecture decision records.
 
 ## License
 
