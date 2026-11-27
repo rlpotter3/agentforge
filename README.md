@@ -19,6 +19,27 @@ The project is being built in public over 30 days. The first milestones will
 set the tech stack, project structure and core agent abstractions. Each decision
 will be captured as an ADR.
 
+## Getting started
+
+1. [Install uv](https://docs.astral.sh/uv/getting-started/installation/). On Windows:
+   `winget install --id=astral-sh.uv -e`, then open a new terminal.
+2. Install Python and the dependencies into a local virtual environment (`.venv/`):
+
+   ```
+   uv sync
+   ```
+
+3. Run the checks. All four must pass before a change is merged:
+
+   ```
+   uv run ruff format --check
+   uv run ruff check
+   uv run pyright
+   uv run pytest
+   ```
+
+`uv run ruff format` (without `--check`) fixes formatting.
+
 ## Contributing
 
 Contributions are welcome. Before you open a pull request:

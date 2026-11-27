@@ -5,8 +5,26 @@ Guidance for Claude Code when working in this repository.
 ## Project
 
 **agentforge** is an open-source AI agent platform, licensed under Apache 2.0.
-It is in its early days, so the structure and tech stack are still being chosen.
-Check `docs/adr/` for decisions already made before you propose new ones.
+It is in its early days. Check `docs/adr/` for decisions already made before you propose new ones.
+
+## Tech stack and commands
+
+- **Language:** Python 3.12 or later, developed on 3.14, with type hints on all function signatures
+  (ADR-0003).
+- **Model access:** Claude through the Anthropic API, behind a provider interface that agent code
+  depends on. Tests use a fake provider and make no network calls (ADR-0002).
+- **Tooling:** uv, pytest, Ruff, Pyright in strict mode and GitHub Actions (ADR-0004).
+- **Layout:** the package is in `src/agentforge/`, and `tests/` mirrors its structure.
+
+Install dependencies with `uv sync`, and add them with `uv add` (`uv add --dev` for development
+tools). All of these must pass before a change is merged:
+
+```
+uv run ruff format --check
+uv run ruff check
+uv run pyright
+uv run pytest
+```
 
 ## About the maintainer
 
