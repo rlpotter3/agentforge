@@ -36,4 +36,7 @@ I completed all of the Day 1 work. It took two days instead of one because of di
 - **Claude calls on Vertex AI don't work yet.** A test request to Claude Haiku 5.5 on the global
   endpoint was rejected with HTTP 429 (quota exceeded). The project's global quotas for Claude
   Haiku, Sonnet, Opus and Fable show zero. I upgraded the account and requested a quota increase,
-  but the request was **denied**. This is still unresolved.
+  but the request was **denied**. A retest on 2026-11-27 failed the same way. I switched to the
+  Anthropic API, and a test request to Claude Haiku 5.5 succeeded
+  ([ADR-0002](../adr/0002-access-claude-through-anthropic-api.md)). Vertex AI access is still
+  unresolved.
