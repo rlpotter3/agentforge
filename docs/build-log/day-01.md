@@ -35,5 +35,5 @@ I completed all of the Day 1 work. It took two days instead of one because of di
 - **Google Play setup** was too. It was just time-consuming.
 - **Claude calls on Vertex AI don't work yet.** A test request to Claude Haiku 5.5 on the global
   endpoint was rejected with HTTP 429 (quota exceeded). The project's global quotas for Claude
-  Haiku, Sonnet, Opus and Fable show zero. The next step is to request a quota increase and test
-  again.
+  Haiku, Sonnet, Opus and Fable show zero. I upgraded the account and requested a quota increase,
+  but the request was **denied**. This is still unresolved.
