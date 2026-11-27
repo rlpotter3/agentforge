@@ -28,7 +28,7 @@ dependencies.
    `uv run ruff format` fixes formatting, and `uv run ruff check --fix` fixes many lint findings.
 4. Open a pull request against `main`. Describe what changes, why, and how you tested it.
 
-Continuous integration runs the same checks on Python 3.12 and 3.14. Both must pass before a pull
+Continuous integration runs the same checks on Python 3.12 and 3.13. Both must pass before a pull
 request is merged.
 
 ## Expectations

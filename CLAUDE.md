@@ -9,8 +9,8 @@ It is in its early days. Check `docs/adr/` for decisions already made before you
 
 ## Tech stack and commands
 
-- **Language:** Python 3.12 or later, developed on 3.14, with type hints on all function signatures
-  (ADR-0003).
+- **Language:** Python 3.12 or 3.13, developed on 3.13, with type hints on all function signatures
+  (ADR-0003, ADR-0007).
 - **Model access:** Claude through the Anthropic API, behind a provider interface that agent code
   depends on. Tests use a fake provider and make no network calls (ADR-0002).
 - **Tooling:** uv, pytest, Ruff, Pyright in strict mode and GitHub Actions (ADR-0004).
