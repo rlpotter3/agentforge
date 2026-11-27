@@ -1,6 +1,6 @@
 # ADR-0003: Use Python for the platform
 
-- **Status:** Accepted
+- **Status:** Accepted. Version requirement superseded by [ADR-0007](0007-support-python-3-12-and-3-13.md)
 - **Date:** 2026-11-27
 
 ## Context

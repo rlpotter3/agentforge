@@ -7,7 +7,8 @@ description = "An open-source platform for building, running and managing AI age
 readme = "README.md"
 license = "Apache-2.0"
 license-files = ["LICENSE"]
-requires-python = ">=3.12"
+# The upper limit is deliberate (ADR-0007): a planned dependency doesn't support 3.14 yet.
+requires-python = ">=3.12,<3.14"
 # Runtime dependencies. Add them with `uv add <name>`.
 dependencies = []
 

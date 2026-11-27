@@ -19,7 +19,7 @@ jobs:
       fail-fast: false
       # A "matrix" runs this job once for each listed value.
       matrix:
-        python-version: ["3.12", "3.14"]
+        python-version: ["3.12", "3.13"]
     name: check (Python ${{ matrix.python-version }})
     steps:
       # Actions are pinned to a commit hash, because a version tag can be moved to other code.
@@ -37,3 +37,14 @@ jobs:
       # Pyright's configured pythonVersion is the 3.12 minimum; override it to match the matrix.
       - run: uv run pyright --pythonversion ${{ matrix.python-version }}
       - run: uv run pytest
+
+  # The one check that the branch rules require (ADR-0007). It stays the same when the list of
+  # Python versions changes.
+  ci-ok:
+    needs: check # waits for every job in the matrix
+    # Run even when a job failed. A skipped required check would count as passing.
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      # The result is "success" only if every matrix job succeeded.
+      - run: test "${{ needs.check.result }}" = "success"

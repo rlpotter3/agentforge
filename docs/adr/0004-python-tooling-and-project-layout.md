@@ -1,6 +1,6 @@
 # ADR-0004: Python tooling and project layout
 
-- **Status:** Accepted
+- **Status:** Accepted. Python versions superseded by [ADR-0007](0007-support-python-3-12-and-3-13.md)
 - **Date:** 2026-11-27
 
 ## Context
