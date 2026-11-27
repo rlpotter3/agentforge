@@ -1,6 +1,6 @@
 # agentforge
 
-**Status: Day 1 of 30**
+**Status: Day 2 of 30**
 
 agentforge is an open-source platform for building, running and managing AI agents.
 It aims to provide the foundations that agent-based applications need,
